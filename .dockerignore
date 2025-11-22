@@ -1,0 +1,39 @@
+# Archivos de Git
+.git
+.gitignore
+.gitattributes
+
+# Directorios de build
+**/bin/
+**/obj/
+**/out/
+**/publish/
+
+# Archivos de Visual Studio / Rider
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de test
+**/TestResults/
+
+# Dependencias de Node (si usas frontend)
+**/node_modules/
+**/npm-debug.log
+
+# Archivos de Docker
+**/Dockerfile*
+**/docker-compose*
+**/.dockerignore
+
+# Archivos de documentación
+**/*.md
+!README.md
+
+# Archivos de logs
+**/logs/
+**/*.log

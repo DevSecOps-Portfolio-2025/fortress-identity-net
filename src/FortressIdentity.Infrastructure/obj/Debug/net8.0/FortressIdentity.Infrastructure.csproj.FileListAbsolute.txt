@@ -1,0 +1,17 @@
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Infrastructure.deps.json
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Infrastructure.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Infrastructure.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Application.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Domain.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Application.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Domain.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.csproj.AssemblyReference.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.AssemblyInfoInputs.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.AssemblyInfo.cs
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.csproj.CoreCompileInputs.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\Fortress.C5D6AC51.Up2Date
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\refint\FortressIdentity.Infrastructure.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\ref\FortressIdentity.Infrastructure.dll

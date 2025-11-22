@@ -1,0 +1,15 @@
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\bin\Debug\net8.0\FortressIdentity.Application.deps.json
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\bin\Debug\net8.0\FortressIdentity.Application.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\bin\Debug\net8.0\FortressIdentity.Application.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\bin\Debug\net8.0\FortressIdentity.Domain.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\bin\Debug\net8.0\FortressIdentity.Domain.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.csproj.AssemblyReference.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.AssemblyInfoInputs.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.AssemblyInfo.cs
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.csproj.CoreCompileInputs.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\Fortress.6C0FFF98.Up2Date
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\refint\FortressIdentity.Application.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\ref\FortressIdentity.Application.dll

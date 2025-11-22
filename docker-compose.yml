@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # SQL Server 2022
+  # ============================================
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: fortress-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=FortressSecure123!
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    networks:
+      - fortress-network
+    restart: unless-stopped
+    healthcheck:
+      # 🚀 FIX: Ruta actualizada a mssql-tools18 y agregado flag -C (Trust Cert)
+      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P FortressSecure123! -C -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  # ============================================
+  # Fortress Identity API
+  # ============================================
+  fortress-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fortress-identity-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # 🚀 FIX: Coincidir con el puerto interno del contenedor
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=FortressIdentityDB;User Id=sa;Password=FortressSecure123!;TrustServerCertificate=True;MultipleActiveResultSets=true
+    ports:
+      - "5000:8080" # Puerto Host:Puerto Contenedor
+      - "5001:8443"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    networks:
+      - fortress-network
+    restart: unless-stopped
+    # 🚀 FIX: Comentamos el volumen de logs por ahora
+    # volumes:
+    #   - ./logs:/app/logs
+
+  # ============================================
+  # Seq (DESACTIVADO TEMPORALMENTE)
+  # ============================================
+  # seq:
+  #   image: datalust/seq:latest
+  #   container_name: fortress-seq
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #   ports:
+  #     - "5341:80"
+  #   volumes:
+  #     - seq-data:/data
+  #   networks:
+  #     - fortress-network
+  #   restart: unless-stopped
+
+# ============================================
+# DEFINICIONES GLOBALES (NO COMENTAR ESTO)
+# ============================================
+volumes:
+  sqlserver-data:   # Necesario para persistencia de SQL
+  # seq-data:       # Este sí puedes comentarlo porque es de Seq
+
+networks:
+  fortress-network: # Necesario para que API vea a SQL
+    driver: bridge

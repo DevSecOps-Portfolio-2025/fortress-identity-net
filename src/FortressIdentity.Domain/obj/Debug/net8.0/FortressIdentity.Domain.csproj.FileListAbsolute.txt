@@ -1,0 +1,11 @@
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\bin\Debug\net8.0\FortressIdentity.Domain.deps.json
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\bin\Debug\net8.0\FortressIdentity.Domain.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\bin\Debug\net8.0\FortressIdentity.Domain.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.AssemblyInfoInputs.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.AssemblyInfo.cs
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.csproj.CoreCompileInputs.cache
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\refint\FortressIdentity.Domain.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.pdb
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\ref\FortressIdentity.Domain.dll

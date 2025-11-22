@@ -1,0 +1,6 @@
+@FortressIdentity.WebApi_HostAddress = http://localhost:5215
+
+GET {{FortressIdentity.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
