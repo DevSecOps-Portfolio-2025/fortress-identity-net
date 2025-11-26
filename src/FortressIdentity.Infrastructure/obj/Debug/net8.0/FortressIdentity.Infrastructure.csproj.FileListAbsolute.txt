@@ -15,3 +15,6 @@ E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8
 E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\refint\FortressIdentity.Infrastructure.dll
 E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.pdb
 E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\ref\FortressIdentity.Infrastructure.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\bin\Debug\net8.0\FortressIdentity.Infrastructure.runtimeconfig.json
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.sourcelink.json
+E:\proyectos\FortressIdentity\src\FortressIdentity.Infrastructure\obj\Debug\net8.0\FortressIdentity.Infrastructure.genruntimeconfig.cache
