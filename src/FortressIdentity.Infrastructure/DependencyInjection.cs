@@ -6,6 +6,7 @@ using FortressIdentity.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace FortressIdentity.Infrastructure;
 
@@ -45,8 +46,13 @@ public static class DependencyInjection
             // options.EnableDetailedErrors();
         });
 
+        // Configure JWT Settings
+        var jwtSection = configuration.GetSection(JwtSettings.SectionName);
+        services.Configure<JwtSettings>(jwtSection);
+
         // Register Authentication Services
         services.AddSingleton<IPasswordHasher, Argon2PasswordHasher>();
+        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
         // Register Repositories
         services.AddScoped<IUserRepository, UserRepository>();

@@ -158,3 +158,7 @@ E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\zh-Ha
 E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\Konscious.Security.Cryptography.Argon2.dll
 E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\Konscious.Security.Cryptography.Blake2.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.WebApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

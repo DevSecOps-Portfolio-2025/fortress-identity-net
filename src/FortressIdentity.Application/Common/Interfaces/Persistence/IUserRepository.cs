@@ -17,6 +17,14 @@ public interface IUserRepository
     Task<bool> ExistsAsync(string email, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Gets a user by their email address.
+    /// </summary>
+    /// <param name="email">Email address to search for</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>User entity if found, null otherwise</returns>
+    Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Adds a new user to the repository.
     /// </summary>
     /// <param name="user">User entity to add</param>
