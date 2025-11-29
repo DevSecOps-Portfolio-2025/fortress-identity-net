@@ -13,3 +13,4 @@ E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\
 E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\refint\FortressIdentity.Application.dll
 E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.pdb
 E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\ref\FortressIdentity.Application.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Application\obj\Debug\net8.0\FortressIdentity.Application.sourcelink.json

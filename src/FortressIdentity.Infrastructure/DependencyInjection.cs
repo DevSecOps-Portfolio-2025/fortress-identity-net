@@ -1,6 +1,8 @@
 using FortressIdentity.Application.Common.Interfaces.Authentication;
+using FortressIdentity.Application.Common.Interfaces.Persistence;
 using FortressIdentity.Infrastructure.Authentication;
 using FortressIdentity.Infrastructure.Persistence;
+using FortressIdentity.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,9 +48,8 @@ public static class DependencyInjection
         // Register Authentication Services
         services.AddSingleton<IPasswordHasher, Argon2PasswordHasher>();
 
-        // TODO: Register repositories, services, and other infrastructure components here
-        // Example:
-        // services.AddScoped<IUserRepository, UserRepository>();
+        // Register Repositories
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

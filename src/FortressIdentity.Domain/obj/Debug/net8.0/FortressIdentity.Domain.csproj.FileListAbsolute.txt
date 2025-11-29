@@ -9,3 +9,4 @@ E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\Fortr
 E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\refint\FortressIdentity.Domain.dll
 E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.pdb
 E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\ref\FortressIdentity.Domain.dll
+E:\proyectos\FortressIdentity\src\FortressIdentity.Domain\obj\Debug\net8.0\FortressIdentity.Domain.sourcelink.json

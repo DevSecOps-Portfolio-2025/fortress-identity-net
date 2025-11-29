@@ -1,0 +1,65 @@
+### Register User - Success Case
+POST https://localhost:7298/api/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "password": "SecureP@ssw0rd123!"
+}
+
+###
+
+### Register User - Weak Password (Should fail validation)
+POST https://localhost:7298/api/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "email": "jane.smith@example.com",
+  "password": "weak"
+}
+
+###
+
+### Register User - Invalid Email (Should fail validation)
+POST https://localhost:7298/api/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "Bob",
+  "lastName": "Johnson",
+  "email": "invalid-email",
+  "password": "SecureP@ssw0rd123!"
+}
+
+###
+
+### Register User - Empty Fields (Should fail validation)
+POST https://localhost:7298/api/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "",
+  "lastName": "",
+  "email": "",
+  "password": ""
+}
+
+###
+
+### Register User - Duplicate Email (Should return 409 Conflict)
+# Run this after the first successful registration
+POST https://localhost:7298/api/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Duplicate",
+  "email": "john.doe@example.com",
+  "password": "AnotherP@ssw0rd456!"
+}
+
+###
