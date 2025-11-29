@@ -32,9 +32,22 @@ public sealed class UserRepository : IUserRepository
     }
 
     /// <inheritdoc />
+    public async Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        return await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
+    }
+
+    /// <inheritdoc />
     public async Task AddAsync(User user, CancellationToken cancellationToken = default)
     {
         await _context.Users.AddAsync(user, cancellationToken);
+    }
+
+    /// <inheritdoc />
+    public void Update(User user)
+    {
+        _context.Users.Update(user);
     }
 
     /// <inheritdoc />

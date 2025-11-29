@@ -63,3 +63,42 @@ Content-Type: application/json
 }
 
 ###
+
+### Assign Role to User - Admin Role
+POST https://localhost:7298/api/auth/assign-role
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "roleName": "Admin"
+}
+
+###
+
+### Assign Role to User - User Role
+POST https://localhost:7298/api/auth/assign-role
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "roleName": "User"
+}
+
+###
+
+### Assign Role - Invalid Role (Should fail validation)
+POST https://localhost:7298/api/auth/assign-role
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "roleName": "SuperUser"
+}
+
+###
+
+### Admin Dashboard - Requires Admin Role
+GET https://localhost:7298/api/admin/dashboard
+Authorization: Bearer {{adminToken}}
+
+###

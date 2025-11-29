@@ -1,4 +1,5 @@
 using FortressIdentity.Application.Features.Auth;
+using FortressIdentity.Application.Features.Auth.Commands.AssignRole;
 using FortressIdentity.Application.Features.Auth.Commands.Login;
 using FortressIdentity.Application.Features.Auth.Commands.Register;
 using MediatR;
@@ -64,6 +65,28 @@ public class AuthController : ApiControllerBase
         var response = await _sender.Send(command, cancellationToken);
 
         return Ok(response);
+    }
+
+    /// <summary>
+    /// Assigns a role to an existing user.
+    /// </summary>
+    /// <param name="command">Role assignment data</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>No content on success</returns>
+    /// <response code="204">Role assigned successfully</response>
+    /// <response code="400">Invalid request data or validation errors</response>
+    /// <response code="404">User not found</response>
+    [HttpPost("assign-role")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> AssignRole(
+        [FromBody] AssignRoleCommand command,
+        CancellationToken cancellationToken)
+    {
+        await _sender.Send(command, cancellationToken);
+
+        return NoContent();
     }
 }
 

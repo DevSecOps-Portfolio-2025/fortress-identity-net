@@ -25,12 +25,26 @@ public interface IUserRepository
     Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Gets a user by their unique identifier.
+    /// </summary>
+    /// <param name="id">User ID to search for</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>User entity if found, null otherwise</returns>
+    Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Adds a new user to the repository.
     /// </summary>
     /// <param name="user">User entity to add</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>Task representing the async operation</returns>
     Task AddAsync(User user, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Updates an existing user in the repository.
+    /// </summary>
+    /// <param name="user">User entity to update</param>
+    void Update(User user);
 
     /// <summary>
     /// Saves all pending changes to the database.
