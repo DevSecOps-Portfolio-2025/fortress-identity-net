@@ -5,8 +5,15 @@ using FortressIdentity.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure Serilog
+builder.Host.UseSerilog((context, loggerConfiguration) =>
+{
+    loggerConfiguration.ReadFrom.Configuration(context.Configuration);
+});
 
 // Add services to the container.
 
@@ -87,6 +94,36 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+// Use Serilog request logging (early in the pipeline)
+// 1. Inicia el log de Serilog, pero configurado para extraer datos extra
+app.UseSerilogRequestLogging(options =>
+{
+    // Esta función se ejecuta JUSTO antes de escribir el log final
+    options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+    {
+        // Si el usuario está autenticado...
+        if (httpContext.User.Identity?.IsAuthenticated == true)
+        {
+            // Busca el ID (puede estar como NameIdentifier o como "sub")
+            var userId = httpContext.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value 
+                         ?? httpContext.User.FindFirst("sub")?.Value;
+
+            if (!string.IsNullOrEmpty(userId))
+            {
+                // ¡Inyectalo en el log final!
+                diagnosticContext.Set("UserId", userId);
+            }
+            
+            // Opcional: También el Email si quieres verlo fácil
+            var email = httpContext.User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value;
+            if (!string.IsNullOrEmpty(email))
+            {
+                diagnosticContext.Set("UserEmail", email);
+            }
+        }
+    };
+});
+
 // Use global exception handler
 app.UseExceptionHandler();
 
@@ -100,6 +137,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Enrich logs with user context (after authentication, before controllers)
+app.UseMiddleware<UserContextLoggingMiddleware>();
 
 app.MapControllers();
 
