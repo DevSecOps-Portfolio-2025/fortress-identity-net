@@ -1,0 +1,115 @@
+### ==============================================
+### MFA (Multi-Factor Authentication) Endpoints
+### ==============================================
+
+@baseUrl = https://localhost:7001/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### ==============================================
+### FLUJO 1: Configurar MFA (First Time Setup)
+### ==============================================
+
+### 1. Setup MFA - Genera el secreto y QR code URI
+### Requiere: Usuario autenticado
+POST {{baseUrl}}/auth/mfa/setup
+Authorization: Bearer {{token}}
+
+###
+
+### 2. Confirmar MFA - Verifica el código y activa MFA
+### El usuario escanea el QR del paso anterior y obtiene un código de 6 dígitos
+POST {{baseUrl}}/auth/mfa/confirm
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "code": "123456"
+}
+
+###
+
+### ==============================================
+### FLUJO 2: Login con MFA Habilitado
+### ==============================================
+
+### 1. Login inicial - Usuario con MFA habilitado
+### Respuesta: RequiresTwoFactor=true, Token=null
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "SecurePassword123!"
+}
+
+###
+
+### 2. Verificar MFA - Completa el login con código TOTP
+### Respuesta: Token JWT completo
+POST {{baseUrl}}/auth/login/mfa
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "SecurePassword123!",
+  "code": "123456"
+}
+
+###
+
+### ==============================================
+### FLUJO 3: Login sin MFA (Usuario Normal)
+### ==============================================
+
+### Login - Usuario sin MFA habilitado
+### Respuesta: Token JWT inmediato, RequiresTwoFactor=false
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "normaluser@example.com",
+  "password": "SecurePassword123!"
+}
+
+###
+
+### ==============================================
+### Escenarios de Respuesta
+### ==============================================
+
+### Respuesta 1: Login exitoso sin MFA
+# {
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+#   "userId": "guid",
+#   "requiresTwoFactor": false,
+#   "message": null
+# }
+
+### Respuesta 2: Login requiere MFA
+# {
+#   "token": null,
+#   "userId": "guid",
+#   "requiresTwoFactor": true,
+#   "message": "Two-factor authentication code required. Please verify with your authenticator app."
+# }
+
+### Respuesta 3: MFA verificado exitosamente
+# {
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+#   "userId": "guid",
+#   "requiresTwoFactor": false,
+#   "message": "Login successful with two-factor authentication."
+# }
+
+### Respuesta 4: Setup MFA
+# {
+#   "secretKey": "JBSWY3DPEHPK3PXP",
+#   "qrCodeUri": "otpauth://totp/FortressIdentity:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=FortressIdentity",
+#   "message": "Scan the QR code or manually enter the secret key..."
+# }
+
+### Respuesta 5: MFA Confirmado
+# {
+#   "success": true,
+#   "message": "Two-Factor Authentication has been successfully enabled for your account."
+# }

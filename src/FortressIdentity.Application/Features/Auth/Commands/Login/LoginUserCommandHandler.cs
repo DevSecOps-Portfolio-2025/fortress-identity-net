@@ -56,13 +56,28 @@ public sealed class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, 
             throw new DomainException("User account is inactive.");
         }
 
-        // 4. Generate JWT token
+        // 4. Check if Two-Factor Authentication is enabled
+        if (user.IsTwoFactorEnabled)
+        {
+            // User has MFA enabled - require code verification
+            return new AuthenticationResponse
+            {
+                Token = null,
+                UserId = user.Id.ToString(),
+                RequiresTwoFactor = true,
+                Message = "Two-factor authentication code required. Please verify with your authenticator app."
+            };
+        }
+
+        // 5. Generate JWT token (MFA not enabled)
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        // 5. Return authentication response
-        return new AuthenticationResponse(
-            Token: token,
-            UserId: user.Id.ToString()
-        );
+        // 6. Return authentication response
+        return new AuthenticationResponse
+        {
+            Token = token,
+            UserId = user.Id.ToString(),
+            RequiresTwoFactor = false
+        };
     }
 }

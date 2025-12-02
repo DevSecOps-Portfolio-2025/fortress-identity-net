@@ -39,6 +39,16 @@ public class User : BaseEntity
     public bool IsActive { get; private set; }
 
     /// <summary>
+    /// Secret key for Two-Factor Authentication (TOTP).
+    /// </summary>
+    public string? TwoFactorSecret { get; private set; }
+
+    /// <summary>
+    /// Indicates whether Two-Factor Authentication is enabled for this user.
+    /// </summary>
+    public bool IsTwoFactorEnabled { get; private set; }
+
+    /// <summary>
     /// Full name of the user (computed property).
     /// </summary>
     public string FullName => $"{FirstName} {LastName}";
@@ -156,6 +166,63 @@ public class User : BaseEntity
         }
 
         Roles.Remove(role);
+        UpdateTimestamp();
+    }
+
+    /// <summary>
+    /// Sets up the MFA secret for the user (preparation step before enabling).
+    /// This allows storing the secret temporarily while the user scans the QR code.
+    /// </summary>
+    /// <param name="secret">The TOTP secret key</param>
+    public void SetupMfaSecret(string secret)
+    {
+        if (string.IsNullOrWhiteSpace(secret))
+        {
+            throw new InvalidEntityException(nameof(User), "TwoFactorSecret cannot be null or empty.");
+        }
+
+        if (IsTwoFactorEnabled)
+        {
+            throw new DomainException("Two-Factor Authentication is already enabled. Disable it first to change the secret.");
+        }
+
+        TwoFactorSecret = secret;
+        // IsTwoFactorEnabled remains false until verification
+        UpdateTimestamp();
+    }
+
+    /// <summary>
+    /// Enables Two-Factor Authentication for the user after successful verification.
+    /// Requires that a secret has been set up first.
+    /// </summary>
+    public void EnableTwoFactor()
+    {
+        if (string.IsNullOrWhiteSpace(TwoFactorSecret))
+        {
+            throw new DomainException("Cannot enable MFA without a secret. Call SetupMfaSecret first.");
+        }
+
+        if (IsTwoFactorEnabled)
+        {
+            throw new DomainException("Two-Factor Authentication is already enabled.");
+        }
+
+        IsTwoFactorEnabled = true;
+        UpdateTimestamp();
+    }
+
+    /// <summary>
+    /// Disables Two-Factor Authentication for the user.
+    /// </summary>
+    public void DisableTwoFactor()
+    {
+        if (!IsTwoFactorEnabled)
+        {
+            throw new DomainException("Two-Factor Authentication is already disabled.");
+        }
+
+        TwoFactorSecret = null;
+        IsTwoFactorEnabled = false;
         UpdateTimestamp();
     }
 
